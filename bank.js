@@ -1,8 +1,8 @@
 class Bank {
   constructor () {
     this.balance = 0;
-    this.date = ''
-    this.bankStatements = []
+    this.date = '';
+    this.bankStatements = [];
   }
 
   _getDate () {
@@ -32,7 +32,7 @@ class Bank {
 
   withdraw (amount) {
     this.balance -= amount;
-    this._getDate()
+    this._getDate();
     const recipt = { 
       date: this.date, 
       credit: ' ', 
@@ -43,17 +43,18 @@ class Bank {
   }
 
   formatStatements () {
+    this.recipt = [];
     for (let i = 0; i < this.bankStatements.length ; i++) {
       let statement = this.bankStatements[i];
-      this.recipt = (`${statement.date} || ${statement.credit} || ${statement.debit} || ${statement.balance}`)
+      this.recipt.push(`${statement.date} || ${statement.credit} || ${statement.debit} || ${statement.balance}`);
     }
     const header = 'date || credit || debit || balance';
-   return `${header}\n${this.recipt}`
+   return `${header}\n${this.recipt.join("\n")}`;
   }
 
   printStatements () {
-    console.log(this.formatStatements())
-    return this.formatStatements()
+    console.log(this.formatStatements());
+    return this.formatStatements();
   }
 }
 
