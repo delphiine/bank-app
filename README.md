@@ -12,13 +12,15 @@ run:
 
 ```
 to use node:
-nvm install node and nvm use node
+nvm install node
+nvm use node
 
 to initialise the NPM project:
 npm init -y
 
 to run the 'jest' command:
-npm add jest and npm install -g jest
+npm add jest
+npm install -g jest
 
 A sync prompt for node:
 npm i prompt-sync
