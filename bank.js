@@ -19,15 +19,15 @@ class Bank {
   }
 
   deposit (amount) {
-   this.balance += amount;
-   this._getDate()
-   const recipt = { 
-    date: this.date, 
-    credit: amount, 
-    debit: ' ',  
-    balance: this.balance
-  };
-   this.bankStatements.push(recipt);
+    this.balance += amount;
+    this._getDate();
+    const recipt = { 
+      date: this.date, 
+      credit: amount, 
+      debit: ' ',  
+      balance: this.balance
+    };
+    this.bankStatements.push(recipt);
   }
 
   withdraw (amount) {
@@ -48,6 +48,7 @@ class Bank {
       let statement = this.bankStatements[i];
       this.recipt.push(`${statement.date} || ${statement.credit} || ${statement.debit} || ${statement.balance}`);
     }
+    this.recipt.reverse()
     const header = 'date || credit || debit || balance';
    return `${header}\n${this.recipt.join("\n")}`;
   }
