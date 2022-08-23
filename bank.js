@@ -21,10 +21,10 @@ class Bank {
   deposit (amount) {
     this.balance += amount;
     this.date = this._getDate();
-    const receipt = { 
-      date: this.date, 
-      credit: amount, 
-      debit: '',  
+    const receipt = {
+      date: this.date,
+      credit: amount,
+      debit: '',
       balance: this.balance
     };
     this.bankStatements.push(receipt);
@@ -33,24 +33,24 @@ class Bank {
   withdraw (amount) {
     this.balance -= amount;
     this.date = this._getDate();
-    const receipt = { 
-      date: this.date, 
-      credit: '', 
-      debit: amount,  
+    const receipt = {
+      date: this.date,
+      credit: '',
+      debit: amount,
       balance: this.balance
     };
     this.bankStatements.push(receipt);
   }
 
   formatStatements () {
-    let receipt = [];
-    for (let i = 0; i < this.bankStatements.length ; i++) {
-      let statement = this.bankStatements[i];
+    const receipt = [];
+    for (let i = 0; i < this.bankStatements.length; i++) {
+      const statement = this.bankStatements[i];
       receipt.push(`${statement.date} || ${statement.credit} || ${statement.debit} || ${statement.balance}`);
     }
     receipt.reverse()
     const header = 'date || credit || debit || balance';
-   return `${header}\n${receipt.join("\n")}`;
+    return `${header}\n${receipt.join('\n')}`;
   }
 
   printStatements () {
