@@ -1,7 +1,7 @@
 class Bank {
   constructor () {
     this.balance = 0;
-    this.date = '';
+    this.date = this._getDate();
     this.bankStatements = [];
   }
 
@@ -11,7 +11,7 @@ class Bank {
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
     const year = date.getFullYear();
     const currentDate = day + '/' + month + '/' + year;
-    return this.date = currentDate;
+    return currentDate;
   }
 
   getBalance () {
@@ -20,37 +20,37 @@ class Bank {
 
   deposit (amount) {
     this.balance += amount;
-    this._getDate();
-    const recipt = { 
+    this.date = this._getDate();
+    const receipt = { 
       date: this.date, 
       credit: amount, 
-      debit: ' ',  
+      debit: '',  
       balance: this.balance
     };
-    this.bankStatements.push(recipt);
+    this.bankStatements.push(receipt);
   }
 
   withdraw (amount) {
     this.balance -= amount;
-    this._getDate();
-    const recipt = { 
+    this.date = this._getDate();
+    const receipt = { 
       date: this.date, 
-      credit: ' ', 
+      credit: '', 
       debit: amount,  
       balance: this.balance
     };
-    this.bankStatements.push(recipt);
+    this.bankStatements.push(receipt);
   }
 
   formatStatements () {
-    this.recipt = [];
+    let receipt = [];
     for (let i = 0; i < this.bankStatements.length ; i++) {
       let statement = this.bankStatements[i];
-      this.recipt.push(`${statement.date} || ${statement.credit} || ${statement.debit} || ${statement.balance}`);
+      receipt.push(`${statement.date} || ${statement.credit} || ${statement.debit} || ${statement.balance}`);
     }
-    this.recipt.reverse()
+    receipt.reverse()
     const header = 'date || credit || debit || balance';
-   return `${header}\n${this.recipt.join("\n")}`;
+   return `${header}\n${receipt.join("\n")}`;
   }
 
   printStatements () {
