@@ -14,7 +14,7 @@ describe('bankApp', () => {
     expect(bank.bank.bankStatements.length).toEqual(1);
   });
 
-  it('test deposit failed', () => {
+  it('test deposit failed due to invalid input', () => {
     const bank = new BankApp();
     const amount = "delphine";
     jest.spyOn(bank, 'getDeposit').mockImplementation(() => amount);
@@ -49,7 +49,7 @@ describe('bankApp', () => {
     expect(bank.bank.bankStatements.length).toEqual(1);
   });
 
-  it('test withdraw failed', () => {
+  it('test withdraw failed due to invalid input', () => {
     const initialBalance = 300;
     const bank = new BankApp(initialBalance);
     const amount = "delphine";
@@ -61,7 +61,7 @@ describe('bankApp', () => {
     expect(bank.bank.balance).toEqual(initialBalance);
   });
 
-  it('run() calls  this.deposit() when user inputs 1', () => {
+  it('run() calls  this.deposit() when a user enters 1', () => {
     const bank = new BankApp();
     jest.spyOn(bank, "getUserInput").mockImplementation(() => 1);
     const spyDeposit = jest.spyOn(bank, "deposit").mockImplementation(() => undefined);
@@ -70,7 +70,7 @@ describe('bankApp', () => {
     expect(spyDeposit).toHaveBeenCalled();
   });
 
-  it('run() calls  this.withdraw() when user inputs 1', () => {
+  it('run() calls  this.withdraw() when a user enters 2', () => {
     const bank = new BankApp();
     jest.spyOn(bank, "getUserInput").mockImplementation(() => 2);
     const spyWithdraw = jest.spyOn(bank, "withdraw").mockImplementation(() => undefined);
@@ -79,12 +79,12 @@ describe('bankApp', () => {
     expect(spyWithdraw).toHaveBeenCalled();
   });
 
-  it("run() calls  this._invalidInputMessage() when user's inputs is invald", () => {
+  it("run() calls  this._invalidInputMessage() when a user's input is invald", () => {
     const bank = new BankApp();
-    jest.spyOn(bank, "getUserInput").mockImplementation(() => 2);
-    const spyWithdraw = jest.spyOn(bank, "withdraw").mockImplementation(() => undefined);
+    jest.spyOn(bank, "getUserInput").mockImplementation(() => 4);
+    const spyInvalidInputMessage = jest.spyOn(bank, "_invalidInputMessage").mockImplementation(() => undefined);
     bank.run();
 
-    expect(spyWithdraw).toHaveBeenCalled();
+    expect(spyInvalidInputMessage).toHaveBeenCalled();
   });
 });
