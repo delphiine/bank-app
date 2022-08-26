@@ -11,7 +11,7 @@ To run the program, first fork or clone this repository, and navigate to the pro
 run:
 
 ```
-to ensure all access to all dependencies:
+to ensure access to all dependencies:
 npm install
 ```
 
