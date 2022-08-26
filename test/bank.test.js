@@ -27,7 +27,7 @@ describe('Bank', () => {
     account.deposit(100);
     account.withdraw(25);
     expect(account.printStatements()).toEqual(
-      "date || credit || debit || balance\n26/08/2022 ||  || 25.00 || 175.00\n26/08/2022 || 100.00 ||  || 200.00\n26/08/2022 || 100.00 ||  || 100.00"
+      "date || credit || debit || balance\n26/08/2022 ||  || 25 || 175\n26/08/2022 || 100 ||  || 200\n26/08/2022 || 100 ||  || 100"
     );
   });
 });

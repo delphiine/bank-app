@@ -1,9 +1,13 @@
 const BankStatement = require('./BankStatement') 
 
 class Bank {
-  constructor (balance=0) {
+  constructor (balance=0.0) {
     this.balance = balance;
-    this.statement = new BankStatement(this);
+    this.bankStatement = new BankStatement(this);
+  }
+
+  getStatements() {
+    return this.bankStatement.getStatements()
   }
 
   getBalance () {
@@ -12,17 +16,17 @@ class Bank {
 
   deposit (amount) {
     this.balance += amount;
-    this.statement.formatDeposit(amount);
+    this.bankStatement.addDeposit(amount);
   }
 
   withdraw (amount) {
     this.balance -= amount;
-    this.statement.formatWithdraw(amount);
+    this.bankStatement.addWithdraw(amount);
   }
 
   printStatements () {
-    console.log(this.statement.formatStatements());
-    return this.statement.formatStatements();
+    console.log(this.bankStatement.formatStatements());
+    return this.bankStatement.formatStatements();
   }
 }
 

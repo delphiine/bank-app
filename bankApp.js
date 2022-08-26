@@ -1,12 +1,12 @@
 const prompt = require('prompt-sync')({ sigint: true })
-const Bank = require('./bank')
+const Bank = require('./Bank')
 
 class BankApp {
   constructor (balance=0) {
     this.bank = new Bank(balance);
   }
 
-  _invalidInputMessage () {
+  invalidInputMessage () {
     console.log('You have entered an invalid input!\nPlease try again');
     this.run();
   }
@@ -20,15 +20,19 @@ class BankApp {
     return prompt('Enter the amount you would like deposit: ');
   }
 
+  getFloat(amount) {
+    return Number((Math.round(amount * 100) / 100).toFixed(2));
+  }
+
   deposit () {
     const amount = this.getDeposit()
     if (isNaN(amount) == false) {
-      this.bank.deposit(parseInt(amount));
+      this.bank.deposit(this.getFloat(amount));
       console.log(`£${amount} was added to your account`);
       this.run();
     } else {
-      this._invalidInputMessage();
-    };
+      this.invalidInputMessage();
+    }
   }
 
   getWithdraw () {
@@ -38,15 +42,15 @@ class BankApp {
   withdraw () {
     const amount = this.getWithdraw();
     if (isNaN(amount) == true) {
-      this._invalidInputMessage();
+      this.invalidInputMessage();
     } else if (this.bank.getBalance() < amount) {
       console.log('Insufficient funds!\nTry a different option');
       this.run();
     } else {
-      this.bank.withdraw(parseInt(amount));
+      this.bank.withdraw(this.getFloat(amount));
       console.log(`£${amount} was withdrawn from your account`);
       this.run();
-    };
+    }
   }
 
   run () {
@@ -58,8 +62,8 @@ class BankApp {
     } else if (action == 3) {
       return this.bank.printStatements();
     } else {
-      this._invalidInputMessage();
-    };
+      this.invalidInputMessage();
+    }
   }
 }
 
