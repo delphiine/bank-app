@@ -11,25 +11,15 @@ To run the program, first fork or clone this repository, and navigate to the pro
 run:
 
 ```
-to use node:
-nvm install node
-nvm use node
-
-to initialise the NPM project:
-npm init -y
-
-to run the 'jest' command:
-npm add jest
-npm install -g jest
-
-A sync prompt for node:
-npm i prompt-sync
+to ensure all access to all dependencies:
+npm install
 ```
 
 ### How to Run the App
 
-Once you have installed all the dependences, run app.js is in your REPL to start the program.
-run 'jest' to view all test results.
+Once you have all the dependences installed, run app.js in your REPL to start the program.
+
+Run 'jest' to view all test results.
 
 After depositing and withdrawing funds from your account, you will be able to print a statement that looks like the example below.
 
