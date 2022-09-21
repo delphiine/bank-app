@@ -9,7 +9,7 @@ The program consistence of two classes. The 'Bank' class has all the logic and t
 ### Project Dependencies
 To run the program, first fork or clone this repository, and navigate to the project folder on your local machine.
 
-To ensure access to all dependencies:
+To ensure access to all dependencies run:
 ```
 npm install
 ```
