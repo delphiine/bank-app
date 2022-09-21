@@ -8,16 +8,15 @@ The program consistence of two classes. The 'Bank' class has all the logic and t
 
 ### Project Dependencies
 To run the program, first fork or clone this repository, and navigate to the project folder on your local machine.
-run:
 
+To ensure access to all dependencies:
 ```
-to ensure access to all dependencies:
 npm install
 ```
 
 ### How to Run the App
 
-Once you have all the dependences installed, run app.js in your REPL to start the program.
+Once you have all the dependences installed, run app.js in your REPL to start the program
 
 Run 'jest' to view all test results.
 
